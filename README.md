@@ -91,12 +91,10 @@ python bot_eng_vers.py
 
 ```
 bubblemap-telegram-bot/
-├── bot.py
+├── bot_eng_vers.py
 ├── README.md
 ├── requirements.txt
 ├── .env
-├── get_screenshot.py
-├── analyze_image.py
 ├── pictures/ (screenshots folder, ignored by git)
 └── .gitignore
 ```
