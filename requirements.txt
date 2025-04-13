@@ -1,0 +1,6 @@
+python-telegram-bot[asyncio]>=20.0
+playwright
+requests
+pycoingecko
+openai
+python-dotenv
