@@ -1,1 +1,7 @@
 .env
+
+pictures/
+
+bot.py
+competition_bubble_map.ipynb
+my_script.py
