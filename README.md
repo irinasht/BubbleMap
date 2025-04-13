@@ -95,6 +95,7 @@ bubblemap-telegram-bot/
 ├── README.md
 ├── requirements.txt
 ├── .env
+├── user-scanario.md
 ├── pictures/ (screenshots folder, ignored by git)
 └── .gitignore
 ```
