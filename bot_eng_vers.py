@@ -210,20 +210,35 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     token_info = get_token_info(chain, token)
 
-    if 'error' in token_info:
-        await update.message.reply_text(f'❌ Error fetching token info: {token_info["error"]}')
-        return
+    if 'error' in token_info or not token_info.get('name'):
+        await update.message.reply_text("⚠️ Unfortunately, there's no token info available from the API.")
+    else:
+        info_text = (
+            f"📌 **Token Information:**\n"
+            f"Name: {token_info['name']}\n"
+            f"Price: ${token_info['price']}\n"
+            f"Market Cap: ${token_info['market_cap']}\n"
+            f"24h Volume: ${token_info['volume_24h']}\n"
+            f"Decentralization Score: {token_info['decentralisation_score']}\n"
+        )
+        await update.message.reply_text(info_text)
 
-    info_text = (
-        f"📌 **Token Information:**\n"
-        f"Name: {token_info['name']}\n"
-        f"Price: ${token_info['price']}\n"
-        f"Market Cap: ${token_info['market_cap']}\n"
-        f"24h Volume: ${token_info['volume_24h']}\n"
-        f"Decentralization Score: {token_info['decentralisation_score']}\n"
-    )
+    # token_info = get_token_info(chain, token)
 
-    await update.message.reply_text(info_text)
+    # if 'error' in token_info:
+    #     await update.message.reply_text(f'❌ Error fetching token info: {token_info["error"]}')
+    #     return
+
+    # info_text = (
+    #     f"📌 **Token Information:**\n"
+    #     f"Name: {token_info['name']}\n"
+    #     f"Price: ${token_info['price']}\n"
+    #     f"Market Cap: ${token_info['market_cap']}\n"
+    #     f"24h Volume: ${token_info['volume_24h']}\n"
+    #     f"Decentralization Score: {token_info['decentralisation_score']}\n"
+    # )
+
+    # await update.message.reply_text(info_text)
 
     # message about starting generation
     msg = await update.message.reply_text('🚀 Generating Bubble Map, please wait (~40 sec)...')
